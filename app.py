@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask,redirect,url_for, render_template
 from flask_login import LoginManager
 from config import config
 from dotenv import load_dotenv
@@ -44,9 +44,9 @@ def create_app(config_name=None):
 
         @app.route('/')
         def index():
-            return "Attendance System Running"
+            return redirect(url_for('auth.login'))
 
-    return app
+        return app
 
 
 app = create_app()
